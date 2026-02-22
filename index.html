@@ -549,6 +549,161 @@
             color: var(--accent-rose);
         }
 
+        /* ===== 収益化エンジンCSS ===== */
+        .recommendation-zone {
+            margin: 32px 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1a2d 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .recommendation-header h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .disclaimer-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .offer-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .offer-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.2);
+        }
+
+        .offer-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-gold), #f4d03f);
+            color: #000;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .offer-title {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .offer-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .offer-cta {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, var(--accent-purple), #9b59b6);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .offer-cta:hover {
+            background: linear-gradient(45deg, #9b59b6, var(--accent-purple));
+            transform: scale(1.02);
+        }
+
+        /* ===== 広告配置システム ===== */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 20px auto;
+            padding: 15px 0;
+        }
+
+        .ad-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .ad-container a:hover img {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .ad-top-banner {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(26, 22, 37, 0.3));
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .ad-sidebar {
+            position: fixed;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            background: rgba(26, 22, 37, 0.95);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+
+        .ad-bottom-banner {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
         .affiliate-disclosure {
             background: rgba(52, 152, 219, 0.1);
             border: 1px solid rgba(52, 152, 219, 0.3);
@@ -599,7 +754,6 @@
             color: var(--accent-gold);
         }
 
-        /* 年齢確認モーダル */
         .age-gate-overlay {
             position: fixed;
             top: 0;
@@ -668,6 +822,12 @@
             color: #fff;
         }
 
+        @media (min-width: 1200px) {
+            .ad-sidebar {
+                display: block;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -724,11 +884,33 @@
                 flex-direction: column;
                 gap: 10px;
             }
+
+            .ad-top-banner {
+                padding: 15px 10px;
+            }
+            
+            .ad-bottom-banner {
+                margin-top: 25px;
+                padding: 15px 10px;
+            }
+            
+            .ad-container {
+                margin: 15px auto;
+            }
+
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recommendation-zone {
+                margin: 20px 0;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 年齢確認モーダル（18歳以上・高校生不可） -->
+    <!-- 年齢確認モーダル -->
     <div id="ageGate" class="age-gate-overlay" style="display:none;">
         <div class="age-gate-box">
             <h2 class="age-gate-title">⚠️ 年齢確認</h2>
@@ -748,6 +930,24 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <!-- 右サイドバー広告：ムームードメイン（PC表示時のみ） -->
+    <div class="ad-sidebar">
+        <div class="ad-label">Sponsored</div>
+        <a href="https://px.a8.net/svt/ejp?a8mat=4AXH8F+BIDPTE+348+1BS90H" rel="nofollow">
+            <img border="0" width="120" height="600" alt="" src="https://www25.a8.net/svt/bgt?aid=260222847696&wid=001&eno=01&mid=s00000000404008026000&mc=1">
+        </a>
+        <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AXH8F+BIDPTE+348+1BS90H" alt="">
+    </div>
+
+    <!-- 上部バナー広告：カルミア美肌クリニック -->
+    <div class="ad-container ad-top-banner">
+        <div class="ad-label">Sponsored</div>
+        <a href="https://px.a8.net/svt/ejp?a8mat=4AXH8F+BT3IPE+2NSW+C2VV5" rel="nofollow">
+            <img border="0" width="728" height="90" alt="" src="https://www28.a8.net/svt/bgt?aid=260222847714&wid=001&eno=01&mid=s00000012416002029000&mc=1">
+        </a>
+        <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AXH8F+BT3IPE+2NSW+C2VV5" alt="">
     </div>
 
     <div class="container">
@@ -1077,6 +1277,17 @@
                 <!-- JavaScript で動的生成 -->
             </div>
 
+            <!-- 収益化エンジンコンテナ -->
+            <div id="monetization-engine" class="recommendation-zone" style="display:none;">
+                <div class="recommendation-header">
+                    <h3>🎯 あなたの市場価値をさらに高める特別オファー</h3>
+                    <p class="disclaimer-text">※完全フィクションの診断結果に基づく、リアルな自分磨き提案</p>
+                </div>
+                <div id="dynamic-offers-container">
+                    <!-- JavaScriptで動的生成 -->
+                </div>
+            </div>
+
             <div class="affiliate-disclosure">
                 <strong>📢 広告・アフィリエイト開示</strong><br>
                 当サイトでは、診断結果に基づき美容・自分磨きに関連するサービスをご紹介する場合があります。
@@ -1123,11 +1334,20 @@
             </p>
         </div>
 
-      <div class="footer-links">
-    <a href="privacy.html" target="_blank">プライバシーポリシー</a> | 
-    <a href="#" onclick="alert('このサイトは完全なフィクションです。実在する業界とは一切関係ありません。\\n\\n表示される金額・ランク・評価は架空のアルゴリズムによる創作数値です。\\n\\n人間の価値は決して金額で測れるものではありません。'); return false;">サイト概要</a>
-</div>
+        <!-- 下部バナー広告：ロリポップ -->
+        <div class="ad-container ad-bottom-banner">
+            <div class="ad-label">Sponsored</div>
+            <a href="https://px.a8.net/svt/ejp?a8mat=4AXH8F+BCFDRM+348+6BU5T" rel="nofollow">
+                <img border="0" width="300" height="300" alt="" src="https://www29.a8.net/svt/bgt?aid=260222847686&wid=001&eno=01&mid=s00000000404001063000&mc=1">
+            </a>
+            <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4AXH8F+BCFDRM+348+6BU5T" alt="">
+        </div>
 
+        <div class="footer-links">
+            <a href="privacy.html" target="_blank">プライバシーポリシー</a> | 
+            <a href="#" onclick="alert('このサイトは完全なフィクションです。実在する業界とは一切関係ありません。\\n\\n表示される金額・ランク・評価は架空のアルゴリズムによる創作数値です。\\n\\n人間の価値は決して金額で測れるものではありません。'); return false;">サイト概要</a>
+        </div>
+    </div>
 
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-text" id="loadingText">ANALYZING FANTASY DATA...</div>
@@ -1137,10 +1357,8 @@
     </div>
 
     <script>
-        // Google Apps ScriptのURL
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKfrt3k2tH4eSajMr3JhH_hebvZoW70B75r0GBe06ViKqOGxZBtf8FV3ErjBTd5JrP/exec';
 
-        // ページ読み込み時に年齢確認（厳格な実施）
         window.addEventListener('DOMContentLoaded', function() {
             if (!sessionStorage.getItem('ageVerified')) {
                 showAgeVerification();
@@ -1174,7 +1392,6 @@
                 return;
             }
 
-            // 入力値検証
             if (!validateInput()) return;
 
             showLoadingScreen();
@@ -1439,6 +1656,115 @@
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('resultSection').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 収益化エンジンを起動
+            activateMonetizationEngine(price, breakdown, nickname);
+        }
+
+        /**
+         * 査定結果に基づく収益化エンジン
+         */
+        function activateMonetizationEngine(assessmentPrice, detailBreakdown, userNickname) {
+            const engineContainer = document.getElementById('monetization-engine');
+            const offersContainer = document.getElementById('dynamic-offers-container');
+            
+            engineContainer.style.display = 'block';
+            
+            const offerDatabase = {
+                premium: [
+                    {
+                        tag: "SSランク専用",
+                        title: "💎 プレミアム全身医療脱毛",
+                        description: "今の高評価を維持するには、プロフェッショナルなメンテナンスが必須。モデル・タレント御用達クリニック。",
+                        ctaText: "VIP予約を確認する",
+                        affiliateUrl: "https://px.a8.net/svt/ejp?a8mat=4AXH8F+BT3IPE+2NSW+C2VV5"
+                    },
+                    {
+                        tag: "高収入層限定",
+                        title: "🥂 エグゼクティブマッチング",
+                        description: "あなたの真の価値を理解するハイクラス層との出会い。年収1000万円以上限定。",
+                        ctaText: "詳細をチェック",
+                        affiliateUrl: "#PREMIUM_MATCHING_LINK" // ← 実際のリンクに置き換え
+                    }
+                ],
+                improvement: [
+                    {
+                        tag: "査定額UP確実",
+                        title: "✨ 二重・美肌で+30万円",
+                        description: "ルックス評価を2ポイント上げるだけで査定額は大幅アップ。まずは無料カウンセリングから。",
+                        ctaText: "変身プランを見る",
+                        affiliateUrl: "https://px.a8.net/svt/ejp?a8mat=4AXH8F+BT3IPE+2NSW+C2VV5"
+                    },
+                    {
+                        tag: "短期集中",
+                        title: "🔥 3ヶ月でランクアップボディ",
+                        description: "体型改善で査定額は確実に上がります。パーソナルトレーニング×食事管理で理想のスタイルへ。",
+                        ctaText: "無料体験を予約",
+                        affiliateUrl: "#RIZAP_LINK" // ← 実際のリンクに置き換え
+                    }
+                ],
+                standard: [
+                    {
+                        tag: "定番メンテ",
+                        title: "🌹 ツルスベ肌で基礎点UP",
+                        description: "自己処理による肌荒れは大幅減点。コスパ最高の医療脱毛で基礎評価を底上げ。",
+                        ctaText: "キャンペーンを確認",
+                        affiliateUrl: "https://px.a8.net/svt/ejp?a8mat=4AXH8F+BT3IPE+2NSW+C2VV5"
+                    }
+                ]
+            };
+            
+            let targetSegment;
+            let personalizedMessage = "";
+            
+            if (assessmentPrice >= 1200000) {
+                targetSegment = "premium";
+                personalizedMessage = `${userNickname}さんは既にトップクラス！この地位を維持・向上させるための特別オファーです。`;
+            } else if (assessmentPrice < 800000) {
+                targetSegment = "improvement";
+                personalizedMessage = `${userNickname}さんにはまだまだ伸び代があります！これらの投資で査定額を一気に押し上げましょう。`;
+            } else {
+                targetSegment = "standard";
+                personalizedMessage = `${userNickname}さんは標準以上の評価！さらなる高みを目指すための厳選オファーです。`;
+            }
+            
+            let offersHtml = `<p style="color: var(--accent-gold); text-align: center; margin-bottom: 20px; font-weight: 500;">${personalizedMessage}</p>`;
+            offersHtml += '<div class="offer-grid">';
+            
+            const mainOffers = offerDatabase[targetSegment];
+            mainOffers.forEach(offer => {
+                offersHtml += generateOfferCard(offer);
+            });
+            
+            if (targetSegment !== "premium" && offerDatabase.standard.length > 0) {
+                offersHtml += generateOfferCard(offerDatabase.standard[0]);
+            }
+            
+            offersHtml += '</div>';
+            
+            offersHtml += `
+                <div style="margin-top: 20px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0; text-align: center;">
+                        ※ 上記は広告です。当サイトの診断は完全にフィクションであり、実在の業界・職業とは一切関係ありません。<br>
+                        ※ 実際のサービス利用は各自の判断でお願いします。
+                    </p>
+                </div>
+            `;
+            
+            offersContainer.innerHTML = offersHtml;
+        }
+
+        function generateOfferCard(offer) {
+            return `
+                <div class="offer-card">
+                    <div class="offer-tag">${offer.tag}</div>
+                    <h4 class="offer-title">${offer.title}</h4>
+                    <p class="offer-description">${offer.description}</p>
+                    <a href="${offer.affiliateUrl}" target="_blank" rel="nofollow noopener" class="offer-cta">
+                        ${offer.ctaText}
+                    </a>
+                </div>
+            `;
         }
 
         function resetAssessment() {
