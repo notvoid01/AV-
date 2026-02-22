@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="もしAVに出たら出演料はいくらに？架空の計算ツール">
-    <title>もしAVに出たら出演料はいくらに？</title>
+    <meta name="description" content="AV出演料リアル査定システム - もしAVに出たら価値はいくら？">
+    <title>🔞 AV Market Value Assessment | 出演料査定システム</title>
     <style>
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --text-color: #2d3436;
-            --card-bg: #ffffff;
-            --border-color: #dfe6e9;
-            --focus-color: #667eea;
+            --bg-primary: #0a0612;
+            --bg-secondary: #1a1625;
+            --accent-gold: #d4af37;
+            --accent-rose: #ff6b9d;
+            --accent-purple: #9b59b6;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --text-muted: #6c757d;
+            --border-color: #343a40;
+            --input-bg: #212529;
+            --card-bg: rgba(26, 22, 37, 0.95);
         }
 
         * {
@@ -25,56 +29,103 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, 
-                         "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-            background: var(--background-gradient);
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #2d1b3d 50%, var(--bg-primary) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 
+                0 0 50px rgba(0, 0, 0, 0.8),
+                0 0 1px var(--accent-gold),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
         }
 
-        .input-section {
-            flex: 1;
-            min-width: 300px;
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--accent-gold) 25%, 
+                var(--accent-rose) 75%, 
+                transparent 100%);
         }
 
-        .result-section {
-            flex: 1;
-            min-width: 300px;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            border-radius: 15px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .header {
+            padding: 40px 30px;
             text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.1) 0%, 
+                rgba(155, 89, 182, 0.1) 100%);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        h1 {
-            color: var(--text-color);
+        .header h1 {
+            font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
             font-size: 28px;
-            margin-bottom: 30px;
-            text-align: center;
-            width: 100%;
-            font-weight: 700;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 12px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 1px;
+            background: var(--accent-purple);
+            opacity: 0.3;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .form-group {
@@ -83,294 +134,690 @@
 
         label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #636e72;
-            font-size: 14px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        select, input[type="number"] {
+        input[type="number"], 
+        input[type="range"],
+        select {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid var(--border-color);
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-size: 16px;
+            color: var(--text-primary);
+            font-size: 15px;
             transition: all 0.3s ease;
-            box-sizing: border-box;
-            background-color: var(--card-bg);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
 
-        select:focus, input[type="number"]:focus {
-            border-color: var(--focus-color);
+        input:focus, select:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+            background: rgba(33, 37, 41, 0.8);
         }
 
-        input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
+        select option {
+            background: var(--input-bg);
+            color: var(--text-primary);
+        }
+
+        .range-container {
+            position: relative;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-rose));
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-gold);
+            border-radius: 50%;
             cursor: pointer;
-            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .checkbox-label {
+        .range-labels {
             display: flex;
-            align-items: center;
-            cursor: pointer;
-            margin-bottom: 0;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 10px;
+            color: var(--text-muted);
         }
 
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            touch-action: manipulation;
         }
 
-        button:hover {
+        .checkbox-item {
+            position: relative;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            display: block;
+            padding: 12px 15px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: none;
+            font-size: 12px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + label {
+            background: rgba(155, 89, 182, 0.2);
+            border-color: var(--accent-purple);
+            color: var(--accent-rose);
+            box-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
+        }
+
+        .assessment-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, 
+                var(--accent-gold) 0%, 
+                #f4d03f 50%, 
+                var(--accent-gold) 100%);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .assessment-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+        .assessment-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 70%);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
         }
 
-        .result-title {
-            font-size: 18px;
-            color: #636e72;
-            margin-bottom: 10px;
-            font-weight: 600;
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
-        .result-value {
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 6, 18, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-text {
+            color: var(--accent-gold);
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-rose));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .result-section {
+            display: none;
+            padding: 40px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.05) 0%, 
+                rgba(255, 107, 157, 0.05) 100%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .result-amount {
+            font-family: "Times New Roman", serif;
             font-size: 48px;
             font-weight: bold;
-            color: var(--primary-color);
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: var(--accent-gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        .result-detail {
-            font-size: 14px;
-            color: #b2bec3;
-            margin-top: 20px;
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            to { text-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+        }
+
+        .result-rank {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 20px 0;
+            background: rgba(155, 89, 182, 0.1);
+        }
+
+        .result-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .breakdown-item {
+            background: var(--input-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .breakdown-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .breakdown-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--accent-rose);
         }
 
         .disclaimer {
-            margin-top: 20px;
-            padding: 15px;
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            border-radius: 5px;
-            font-size: 12px;
-            color: #856404;
+            padding: 20px 30px;
+            background: rgba(255, 193, 7, 0.05);
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+            font-size: 11px;
+            color: var(--text-muted);
             line-height: 1.6;
-            width: 100%;
-        }
-
-        .disclaimer strong {
-            font-weight: bold;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-                align-items: flex-start;
-            }
-
             .container {
-                padding: 25px 20px;
-                flex-direction: column;
-                gap: 30px;
-                max-width: 100%;
+                margin: 10px;
+                border-radius: 12px;
             }
-
-            .input-section, .result-section {
-                min-width: 100%;
+            
+            .header {
+                padding: 30px 20px;
             }
-
-            h1 {
+            
+            .header h1 {
                 font-size: 24px;
-                margin-bottom: 25px;
             }
-
-            .result-value {
+            
+            .form-content {
+                padding: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-amount {
                 font-size: 36px;
             }
-
-            button {
-                padding: 14px 24px;
-                font-size: 16px;
+            
+            .progress-bar {
+                width: 250px;
             }
-
-            select, input[type="number"] {
-                font-size: 16px;
-                padding: 14px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 20px 15px;
-                border-radius: 15px;
-            }
-
-            h1 {
-                font-size: 20px;
-            }
-
-            .result-value {
-                font-size: 32px;
-            }
-
-            .form-group {
-                margin-bottom: 18px;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-section.show-result {
-            animation: fadeInUp 0.5s ease-out;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💰 もしAVに出たら出演料はいくらに？</h1>
-        
-        <div class="input-section">
-            <div class="form-group">
-                <label for="age">年齢</label>
-                <input type="number" id="age" placeholder="例: 22" min="18" max="60" value="25">
+        <header class="header">
+            <h1>AV Market Value Assessment</h1>
+            <div class="subtitle">出演料査定システム Professional Edition</div>
+        </header>
+
+        <div class="form-content" id="formContent">
+            <div class="section">
+                <div class="section-title">Basic Profile</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>年齢</label>
+                        <input type="number" id="age" value="22" min="18" max="50">
+                    </div>
+                    <div class="form-group">
+                        <label>身長 (cm)</label>
+                        <input type="number" id="height" value="160" min="140" max="180">
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="appearance">ルックスレベル</label>
-                <select id="appearance">
-                    <option value="1">1 - 普通</option>
-                    <option value="3">3 - まあまあ可愛い</option>
-                    <option value="5" selected>5 - 可愛い</option>
-                    <option value="8">8 - 美人</option>
-                    <option value="10">10 - 超美人</option>
-                </select>
+            <div class="section">
+                <div class="section-title">Physical Attributes</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>カップサイズ</label>
+                        <select id="cup">
+                            <option value="1">A カップ</option>
+                            <option value="2">B カップ</option>
+                            <option value="3" selected>C カップ</option>
+                            <option value="4">D カップ</option>
+                            <option value="5">E カップ</option>
+                            <option value="6">F カップ</option>
+                            <option value="7">G カップ</option>
+                            <option value="8">H カップ以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>体型</label>
+                        <select id="bodyType">
+                            <option value="slim">スレンダー</option>
+                            <option value="normal" selected>標準</option>
+                            <option value="curvy">グラマラス</option>
+                            <option value="chubby">ぽっちゃり</option>
+                            <option value="athletic">アスリート系</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ルックス評価 (1-10)</label>
+                    <div class="range-container">
+                        <input type="range" id="looks" min="1" max="10" value="6">
+                        <div class="range-labels">
+                            <span>普通</span>
+                            <span>可愛い</span>
+                            <span>美人</span>
+                            <span>超美人</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="style">スタイル</label>
-                <select id="style">
-                    <option value="slim">スリム</option>
-                    <option value="normal" selected>普通</option>
-                    <option value="curvy">グラマラス</option>
-                    <option value="chubby">ぽっちゃり</option>
-                </select>
+            <div class="section">
+                <div class="section-title">Experience & Status</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>AV経験</label>
+                        <select id="experience">
+                            <option value="0" selected>未経験</option>
+                            <option value="1">1-5作品</option>
+                            <option value="2">6-20作品</option>
+                            <option value="3">21作品以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>経験人数</label>
+                        <select id="experienceCount">
+                            <option value="5.0">処女</option>
+                            <option value="2.5">1-2人</option>
+                            <option value="1.8">3-10人</option>
+                            <option value="1.0" selected>一般的</option>
+                            <option value="0.8">多数</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="experience">
-                    AV経験あり（2作品目以降）
-                </label>
+            <div class="section">
+                <div class="section-title">Market Value Factors</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>SNSフォロワー数</label>
+                        <select id="followers">
+                            <option value="0">1,000人未満</option>
+                            <option value="20" selected>1,000-10,000人</option>
+                            <option value="50">10,000-50,000人</option>
+                            <option value="100">50,000-100,000人</option>
+                            <option value="200">100,000人以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>職業・バックグラウンド</label>
+                        <select id="profession">
+                            <option value="1.0" selected>一般・学生</option>
+                            <option value="1.2">OL・会社員</option>
+                            <option value="1.4">看護師・保育士</option>
+                            <option value="1.6">キャバ嬢・水商売</option>
+                            <option value="2.0">モデル・タレント</option>
+                            <option value="2.5">元アイドル</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <button onclick="calculateFee()">💵 鑑定する</button>
+            <div class="section">
+                <div class="section-title">Special Features</div>
+                <div class="checkbox-grid">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="natural" value="30">
+                        <label for="natural">完全天然（整形なし）</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flexible" value="20">
+                        <label for="flexible">体が柔らかい</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="squirt" value="50">
+                        <label for="squirt">潮吹き可能</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="multilingual" value="40">
+                        <label for="multilingual">外国語対応</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="cosplay" value="25">
+                        <label for="cosplay">コスプレ得意</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="sm" value="60">
+                        <label for="sm">SM・ハードプレイOK</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="assessment-btn" onclick="startAssessment()">
+                査定を開始する
+            </button>
         </div>
 
-        <div class="result-section">
-            <div class="result-title">推定出演料</div>
-            <div class="result-value" id="result">--- 万円</div>
-            <div class="result-detail">※独自アルゴリズムによる推定値です</div>
+        <div class="result-section" id="resultSection">
+            <div class="result-label">Estimated Fee Per Title</div>
+            <div class="result-amount" id="finalAmount">¥0</div>
+            <div class="result-rank" id="marketRank">Market Rank: C</div>
+            
+            <div class="result-breakdown" id="breakdown">
+                <!-- JavaScript で動的生成 -->
+            </div>
+            
+            <button class="assessment-btn" onclick="resetAssessment()" style="background: #6c757d; margin-top: 30px;">
+                再査定する
+            </button>
         </div>
 
         <div class="disclaimer">
-            ⚠️ <strong>注意:</strong> これは架空の計算ツールであり、実際の業界データに基づくものではありません。エンターテインメント目的でのみご利用ください。
+            <strong>免責事項:</strong> このツールは完全にフィクションであり、エンターテインメント目的でのみ作成されています。実際のAV業界のデータや統計に基づくものではなく、表示される金額は架空の数値です。18歳未満の方の利用を禁止します。実際の契約や出演を推奨・保証するものではありません。
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-text" id="loadingText">DATABASE CONNECTION...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
     </div>
 
     <script>
-        function calculateFee() {
-            const age = parseInt(document.getElementById('age').value) || 25;
-            const appearance = parseInt(document.getElementById('appearance').value);
-            const style = document.getElementById('style').value;
-            const experience = document.getElementById('experience').checked;
-
+        function startAssessment() {
+            const age = document.getElementById('age').value;
             if (age < 18) {
-                alert('18歳以上の年齢を入力してください。');
+                alert('18歳未満の方は利用できません。');
                 return;
             }
 
-            if (age > 60) {
-                alert('60歳以下の年齢を入力してください。');
-                return;
-            }
+            showLoadingScreen();
+        }
 
-            let baseFee = 30;
+        function showLoadingScreen() {
+            const overlay = document.getElementById('loadingOverlay');
+            const loadingText = document.getElementById('loadingText');
+            const progressFill = document.getElementById('progressFill');
 
-            if (age < 20) baseFee += 20;
-            else if (age < 25) baseFee += 15;
-            else if (age < 30) baseFee += 10;
-            else if (age > 35) baseFee -= 5;
+            const messages = [
+                "DATABASE CONNECTION...",
+                "ANALYZING PHYSICAL DATA...",
+                "CHECKING MARKET DEMAND...",
+                "CALCULATING PREMIUM VALUE...",
+                "FINALIZING ASSESSMENT..."
+            ];
 
-            baseFee = baseFee * (1 + (appearance * 0.2));
+            overlay.style.display = 'flex';
+            let step = 0;
+            let progress = 0;
 
-            if (style === 'curvy') baseFee += 20;
-            if (style === 'slim') baseFee += 10;
-            if (style === 'chubby') baseFee += 5;
-
-            if (experience) baseFee *= 1.4;
-
-            const finalFee = Math.max(1, Math.floor(baseFee));
-            
-            const resultElement = document.getElementById('result');
-            const resultSection = document.querySelector('.result-section');
-            
-            let currentVal = 0;
-            const increment = Math.max(1, Math.ceil(finalFee / 25));
-            
-            resultSection.classList.add('show-result');
-            
             const interval = setInterval(() => {
-                currentVal += increment;
-                if (currentVal >= finalFee) {
-                    currentVal = finalFee;
+                if (step < messages.length) {
+                    loadingText.textContent = messages[step];
+                    progress = ((step + 1) / messages.length) * 100;
+                    progressFill.style.width = progress + '%';
+                    step++;
+                } else {
                     clearInterval(interval);
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        calculateAndShowResult();
+                    }, 500);
                 }
-                resultElement.innerText = currentVal.toLocaleString() + " 万円";
-            }, 40);
+            }, 600);
+        }
 
-            setTimeout(() => {
-                resultSection.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
-            }, 100);
+        function calculateAndShowResult() {
+            // 基本データ取得
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const cup = parseInt(document.getElementById('cup').value);
+            const bodyType = document.getElementById('bodyType').value;
+            const looks = parseInt(document.getElementById('looks').value);
+            const experience = parseInt(document.getElementById('experience').value);
+            const experienceCount = parseFloat(document.getElementById('experienceCount').value);
+            const followers = parseInt(document.getElementById('followers').value);
+            const profession = parseFloat(document.getElementById('profession').value);
+
+            // 基本料金設定
+            let basePrice = 250000; // 25万円
+
+            // 年齢補正
+            let ageBonus = 0;
+            if (age >= 18 && age <= 20) ageBonus = 200000;
+            else if (age <= 23) ageBonus = 150000;
+            else if (age <= 26) ageBonus = 100000;
+            else if (age <= 30) ageBonus = 50000;
+            else if (age >= 35) ageBonus = 30000; // 熟女需要
+
+            // ルックス補正（重要度高）
+            const looksBonus = (looks - 5) * 80000;
+
+            // カップサイズ補正
+            const cupBonus = cup * 25000;
+
+            // 体型補正
+            let bodyBonus = 0;
+            switch(bodyType) {
+                case 'slim': bodyBonus = 40000; break;
+                case 'curvy': bodyBonus = 80000; break;
+                case 'athletic': bodyBonus = 60000; break;
+                case 'chubby': bodyBonus = 30000; break;
+                default: bodyBonus = 20000;
+            }
+
+            // 経験補正
+            let expBonus = 0;
+            switch(experience) {
+                case 1: expBonus = 50000; break;
+                case 2: expBonus = 100000; break;
+                case 3: expBonus = 150000; break;
+            }
+
+            // 基本計算
+            let totalPrice = basePrice + ageBonus + looksBonus + cupBonus + bodyBonus + expBonus;
+
+            // 乗数補正
+            totalPrice = totalPrice * experienceCount * profession;
+
+            // SNSフォロワー加算
+            totalPrice += (followers * 1000);
+
+            // 特技チェックボックス
+            let specialBonus = 0;
+            const checkboxes = ['natural', 'flexible', 'squirt', 'multilingual', 'cosplay', 'sm'];
+            checkboxes.forEach(id => {
+                const element = document.getElementById(id);
+                if (element && element.checked) {
+                    specialBonus += parseInt(element.value) * 1000;
+                }
+            });
+
+            totalPrice += specialBonus;
+
+            // 最終調整
+            totalPrice = Math.max(80000, Math.round(totalPrice / 10000) * 10000);
+
+            // ランク判定
+            let rank = "C - Standard";
+            if (totalPrice >= 500000) rank = "B - Popular";
+            if (totalPrice >= 1000000) rank = "A - Premium";
+            if (totalPrice >= 2000000) rank = "S - Elite";
+            if (totalPrice >= 5000000) rank = "SS - Legend";
+
+            // 結果表示
+            displayResult(totalPrice, rank, {
+                age: ageBonus,
+                looks: looksBonus,
+                cup: cupBonus,
+                body: bodyBonus,
+                experience: expBonus,
+                special: specialBonus,
+                followers: followers * 1000
+            });
+        }
+
+        function displayResult(price, rank, breakdown) {
+            // 金額のカウントアップアニメーション
+            const resultAmount = document.getElementById('finalAmount');
+            const marketRank = document.getElementById('marketRank');
+            const breakdownDiv = document.getElementById('breakdown');
+
+            let currentAmount = 0;
+            const increment = Math.ceil(price / 50);
+
+            const countUp = setInterval(() => {
+                currentAmount += increment;
+                if (currentAmount >= price) {
+                    currentAmount = price;
+                    clearInterval(countUp);
+                }
+                resultAmount.textContent = '¥' + currentAmount.toLocaleString();
+            }, 30);
+
+            marketRank.textContent = 'Market Rank: ' + rank;
+
+            // 内訳表示
+            breakdownDiv.innerHTML = `
+                <div class="breakdown-item">
+                    <div class="breakdown-label">年齢ボーナス</div>
+                    <div class="breakdown-value">¥${breakdown.age.toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">ルックス評価</div>
+                    <div class="breakdown-value">${breakdown.looks >= 0 ? '+' : ''}¥${breakdown.looks.toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">バスト・体型</div>
+                    <div class="breakdown-value">¥${(breakdown.cup + breakdown.body).toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">経験・実績</div>
+                    <div class="breakdown-value">¥${breakdown.experience.toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">SNS影響力</div>
+                    <div class="breakdown-value">¥${breakdown.followers.toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">特技・スキル</div>
+                    <div class="breakdown-value">¥${breakdown.special.toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">年間推定収入</div>
+                    <div class="breakdown-value">¥${(price * 24).toLocaleString()}</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-label">時給換算 (8h撮影)</div>
+                    <div class="breakdown-value">¥${Math.round(price / 8).toLocaleString()}</div>
+                </div>
+            `;
+
+            // 画面切り替え
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('resultSection').style.display = 'block';
+            
+            // トップまでスクロール
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetAssessment() {
+            document.getElementById('resultSection').style.display = 'none';
+            document.getElementById('formContent').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
